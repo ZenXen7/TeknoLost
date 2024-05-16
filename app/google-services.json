@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "351218297689",
+    "project_id": "teknolost-8f14f",
+    "storage_bucket": "teknolost-8f14f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351218297689:android:a53c49448e6f0c10ae3a48",
+        "android_client_info": {
+          "package_name": "com.example.teknolost"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD7stvwwXzvxZBISVzRXj9z-161TB_Rto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
