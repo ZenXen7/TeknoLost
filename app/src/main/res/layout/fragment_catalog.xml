@@ -11,167 +11,86 @@
         android:layout_height="match_parent"
         android:padding="10dp">
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit Found/Lost Item Here"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.146"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.069" />
+            tools:layout_editor_absoluteX="10dp">
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Enter details of the item you'st lost or found"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.224"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.101" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
 
-        <EditText
-            android:id="@+id/itemDesc"
-            android:layout_width="339dp"
-            android:layout_height="100dp"
-            android:background="@drawable/square"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="Description"
-            android:inputType="textMultiLine"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itemName"
-            app:layout_constraintVertical_bias="0.06" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="339dp"
-            android:layout_height="49dp"
-            android:background="@drawable/square"
-            android:ems="10"
-            android:inputType="none"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.383" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/uploadImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
 
-        <CheckBox
-            android:id="@+id/found"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Found"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.231"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.383" />
+                android:src="@drawable/upimage" />
 
-        <CheckBox
-            android:id="@+id/lost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lost"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.681"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.383" />
+            <EditText
+                android:id="@+id/uploadTopic"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_corner"
+                android:gravity="start|center_vertical"
+                android:hint="Item"
+                android:padding="16dp"
+                android:textColor="@color/lavender" />
 
-        <EditText
-            android:id="@+id/itemName"
-            android:layout_width="339dp"
-            android:layout_height="49dp"
-            android:background="@drawable/square"
-            android:ems="10"
-            android:hint="Item name"
-            android:inputType="text"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.477" />
+            <EditText
+                android:id="@+id/uploadDesc"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_corner"
+                android:gravity="start|center_vertical"
+                android:hint="Description"
+                android:padding="16dp"
+                android:textColor="@color/lavender" />
 
-        <ImageView
-            android:id="@+id/profilePic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="65dp"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8"
-            app:srcCompat="@drawable/ic_launcher_background"
-            tools:src="@tools:sample/avatars"
-            tools:srcCompat="@drawable/ic_launcher_background" />
+            <EditText
+                android:id="@+id/uploadLang"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_corner"
+                android:gravity="start|center_vertical"
+                android:hint="Enter language"
+                android:padding="16dp"
+                android:textColor="@color/lavender" />
 
-        <EditText
-            android:id="@+id/itemDate"
-            android:layout_width="339dp"
-            android:layout_height="49dp"
-            android:background="@drawable/square"
-            android:ems="10"
-            android:hint="Date"
-            android:inputType="none"
-            android:focusable="false"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.744" />
 
-        <Button
-            android:id="@+id/btnSubmitData"
-            android:layout_width="339dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="37dp"
-            android:text="Submit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itemDate" />
 
-        <TextView
-            android:id="@+id/testText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            android:layout_marginBottom="15dp"
-
-            app:layout_constraintBottom_toTopOf="@+id/btnSubmitData"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itemDate"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageButton
-            android:id="@+id/datebutton"
-            android:layout_width="47dp"
-            android:layout_height="50dp"
-            android:src="@drawable/calendar"
-            android:background="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.924"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.744" />
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:text="Submit"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

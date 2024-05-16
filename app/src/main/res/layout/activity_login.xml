@@ -6,25 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
+    <ImageView
+        android:id="@+id/logobackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="188dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.453"
+        app:srcCompat="@drawable/wildcats" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome"
+        android:text="Welcome Back!"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.213" />
+        app:layout_constraintVertical_bias="0.214" />
 
     <EditText
         android:id="@+id/loginemail"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:background="@drawable/round_corner"
+        android:background="@drawable/round_corner2"
         android:ems="10"
         android:inputType="text"
         android:padding="20dp"
@@ -45,17 +58,17 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginpassword"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintVertical_bias="0.152" />
 
     <EditText
         android:id="@+id/loginpassword"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
-        android:background="@drawable/round_corner"
+        android:background="@drawable/round_corner2"
         android:ems="10"
         android:inputType="textPassword"
         android:padding="20dp"

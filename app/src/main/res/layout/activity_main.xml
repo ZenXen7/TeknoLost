@@ -21,8 +21,8 @@
 
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:itemPaddingBottom="5dp"
+        android:layout_height="60dp"
+        app:itemPaddingBottom="10dp"
         app:menu="@menu/bottom_nav_menu" />
 
 
