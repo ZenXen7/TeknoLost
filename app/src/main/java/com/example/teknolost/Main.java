@@ -16,6 +16,11 @@ import com.example.teknolost.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+<<<<<<< HEAD
+=======
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+>>>>>>> 09c2c91cd7d5941aaa004da7168b70d3dbf33af3
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,7 +32,11 @@ public class Main extends AppCompatActivity {
     ActivityMainBinding binding;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+<<<<<<< HEAD
 
+=======
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+>>>>>>> 09c2c91cd7d5941aaa004da7168b70d3dbf33af3
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +45,13 @@ public class Main extends AppCompatActivity {
         setContentView(binding.getRoot());
         loadFragment(new HomeFragment());
 
+<<<<<<< HEAD
+=======
+        String currUserId = user.getUid();
+
+
+
+>>>>>>> 09c2c91cd7d5941aaa004da7168b70d3dbf33af3
         binding.bottomNav.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
@@ -54,6 +70,7 @@ public class Main extends AppCompatActivity {
         });
 
 
+<<<<<<< HEAD
 //        myRef.child("users").child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 //            @Override
 //            public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -65,6 +82,8 @@ public class Main extends AppCompatActivity {
 //                }
 //            }
 //        });
+=======
+>>>>>>> 09c2c91cd7d5941aaa004da7168b70d3dbf33af3
 
 
     }

@@ -39,6 +39,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+<<<<<<< HEAD
+=======
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+>>>>>>> 09c2c91cd7d5941aaa004da7168b70d3dbf33af3
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -62,6 +67,13 @@ public class CatalogFragment extends Fragment {
     private FirebaseStorage storage;
     private StorageReference storageRef;
 
+<<<<<<< HEAD
+=======
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    public String currentUserId = user.getUid();
+
+
+>>>>>>> 09c2c91cd7d5941aaa004da7168b70d3dbf33af3
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
 
@@ -74,6 +86,10 @@ public class CatalogFragment extends Fragment {
         saveButton = (Button) v.findViewById(R.id.saveButton);
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 09c2c91cd7d5941aaa004da7168b70d3dbf33af3
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -145,7 +161,11 @@ public class CatalogFragment extends Fragment {
         Data dataClass = new Data(title, desc, lang, imageURL);
 
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+<<<<<<< HEAD
         FirebaseDatabase.getInstance().getReference("Items").child(currentDate)
+=======
+        FirebaseDatabase.getInstance().getReference("Items").child(currentUserId)
+>>>>>>> 09c2c91cd7d5941aaa004da7168b70d3dbf33af3
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
