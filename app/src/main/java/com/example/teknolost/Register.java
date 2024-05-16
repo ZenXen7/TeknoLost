@@ -23,8 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
-
-    private EditText user,pass,fname,cpass;
+    private EditText user, pass, fname, cpass;
     private Button btnRegister;
     private TextView txtRedirect;
     private FirebaseAuth mAuth;
@@ -32,7 +31,6 @@ public class Register extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     private static final String TAG = "EmailPassword";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,36 +44,29 @@ public class Register extends AppCompatActivity {
         txtRedirect = findViewById(R.id.btnRedirectLogin);
         btnRegister = findViewById(R.id.btnReg);
 
-
-        database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startSignIn();
-           }
-
-
+            }
         });
-
-
     }
 
-
+    @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             reload();
         }
     }
 
     private void reload() {
-
+        // Reload UI
     }
-
 
     private void startSignIn() {
         String fullname = fname.getText().toString();
@@ -88,42 +79,35 @@ public class Register extends AppCompatActivity {
         } else if (!pword.equals(cpword)) {
             Toast.makeText(Register.this, "Passwords do not match. Please try again", Toast.LENGTH_SHORT).show();
         } else {
-
             mAuth.createUserWithEmailAndPassword(emaill, pword)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-
-                                signUp(fullname, emaill, pword, cpword);
-
-                                Toast.makeText(Register.this, "Registered Succesfully", Toast.LENGTH_SHORT).show();
-                                Log.d(TAG, "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                updateUI(user);
-                                startActivity(new Intent(Register.this, Login.class));
-                                finish();
+                                if (user != null) {
+                                    signUp(user.getUid(), fullname, emaill, pword, cpword);
+                                    Toast.makeText(Register.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, "createUserWithEmail:success");
+                                    updateUI(user);
+                                    startActivity(new Intent(Register.this, Login.class));
+                                    finish();
+                                }
                             } else {
-                                // If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(Register.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Register.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 updateUI(null);
                             }
                         }
                     });
-
         }
-
     }
 
     private void updateUI(FirebaseUser user) {
-
+        // Update UI after sign up
     }
 
-
-    public void signUp(String name, String email, String password, String cpassword) {
-        String userId = myRef.child("users").push().getKey();
+    public void signUp(String userId, String name, String email, String password, String cpassword) {
         Users user = new Users(userId, name, email, password, cpassword);
         myRef.child("users").child(userId).setValue(user);
     }

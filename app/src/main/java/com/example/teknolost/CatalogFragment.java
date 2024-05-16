@@ -39,6 +39,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -62,6 +64,10 @@ public class CatalogFragment extends Fragment {
     private FirebaseStorage storage;
     private StorageReference storageRef;
 
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    public String currentUserId = user.getUid();
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
 
@@ -72,6 +78,7 @@ public class CatalogFragment extends Fragment {
         uploadTopic = (EditText) v.findViewById(R.id.uploadTopic);
         uploadLang = (EditText) v.findViewById(R.id.uploadLang);
         saveButton = (Button) v.findViewById(R.id.saveButton);
+
 
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
@@ -145,7 +152,7 @@ public class CatalogFragment extends Fragment {
         Data dataClass = new Data(title, desc, lang, imageURL);
 
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-        FirebaseDatabase.getInstance().getReference("Items").child(currentDate)
+        FirebaseDatabase.getInstance().getReference("Items").child(currentUserId)
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
