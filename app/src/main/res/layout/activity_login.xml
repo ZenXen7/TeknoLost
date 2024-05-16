@@ -26,15 +26,15 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/kamerik"
         android:text="Sign Up"
-        android:textColor="#000000"
-        android:textSize="34sp"
+        android:textColor="#640E0B"
+        android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintVertical_bias="0.196" />
 
     <EditText
         android:id="@+id/loginemail"
@@ -131,7 +131,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/kamerik"
         android:text="Email Address"
-        android:textColor="#000000"
+        android:textColor="#640E0B"
         app:layout_constraintBottom_toTopOf="@+id/loginemail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.127"
@@ -147,12 +147,12 @@
         android:layout_marginBottom="11dp"
         android:fontFamily="@font/kamerik"
         android:text="Password"
-        android:textColor="#000000"
+        android:textColor="#640E0B"
         app:layout_constraintBottom_toTopOf="@+id/loginpassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/loginemail"
         app:layout_constraintTop_toBottomOf="@+id/loginemail"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.32" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
