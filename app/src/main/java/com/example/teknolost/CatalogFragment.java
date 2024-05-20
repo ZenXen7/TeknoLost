@@ -49,6 +49,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.xml.transform.Result;
@@ -57,7 +59,7 @@ import javax.xml.transform.Result;
 public class CatalogFragment extends Fragment {
     ImageView uploadImage;
     Button saveButton;
-    EditText uploadTopic, uploadDesc, uploadLang;
+    EditText uploadTopic, uploadDesc, uploadLang,uploadDate;
     String imageURL;
     Uri uri;
 
@@ -76,8 +78,11 @@ public class CatalogFragment extends Fragment {
         uploadImage = (ImageView) v.findViewById(R.id.uploadImage);
         uploadDesc = (EditText) v.findViewById(R.id.uploadDesc);
         uploadTopic = (EditText) v.findViewById(R.id.uploadTopic);
-        uploadLang = (EditText) v.findViewById(R.id.uploadLang);
+        uploadLang = (EditText) v.findViewById(R.id.uploadLand);
         saveButton = (Button) v.findViewById(R.id.saveButton);
+        uploadDate =  (EditText) v.findViewById(R.id.uploadDate);
+
+        uploadDate.setOnClickListener(view -> showDatePickerDialog());
 
 
 
@@ -111,7 +116,7 @@ public class CatalogFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 saveData();
-                reloadFragment();
+
 
             }
         });
@@ -121,7 +126,34 @@ public class CatalogFragment extends Fragment {
 
     }
 
+    private void showDatePickerDialog() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Create a new DatePickerDialog
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                getContext(),
+                (view, year1, month1, dayOfMonth) -> {
+                    // Format the date and set it in the EditText
+                    String selectedDate = dayOfMonth + "/" + (month1 + 1) + "/" + year1;
+                    uploadDate.setText(selectedDate);
+                },
+                year, month, day);
+
+        datePickerDialog.show();
+    }
+
+
     private void saveData() {
+
+
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setTitle("Uploading");
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Items")
                 .child(uri.getLastPathSegment());
@@ -134,6 +166,8 @@ public class CatalogFragment extends Fragment {
                 imageURL = urlImage.toString();
                 uploadData();
 
+
+                progressDialog.dismiss();
 //                Toast.makeText(getContext(), "Upload Succesfull", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -141,6 +175,7 @@ public class CatalogFragment extends Fragment {
             public void onFailure(@NonNull Exception e) {
 
                 Toast.makeText(getContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
     }
@@ -149,36 +184,50 @@ public class CatalogFragment extends Fragment {
         String title = uploadTopic.getText().toString();
         String desc = uploadDesc.getText().toString();
         String lang = uploadLang.getText().toString();
-        Data dataClass = new Data(title, desc, lang, imageURL);
+        String date = uploadDate.getText().toString();
+        Data dataClass = new Data(title, desc, lang, imageURL, date);
 
-        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-        FirebaseDatabase.getInstance().getReference("Items").child(currentUserId)
-                .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
+        // Generate a unique key for each new entry
+        String key = FirebaseDatabase.getInstance().getReference("Items").push().getKey();
+
+        // Create a HashMap to store the data
+        Map<String, Object> dataMap = new HashMap<>();
+        dataMap.put("userId", currentUserId); // Include userId in the data
+        dataMap.put("dataDesc", desc);
+        dataMap.put("dataImage", imageURL);
+        dataMap.put("dataLang", lang);
+        dataMap.put("dataTitle", title);
+        dataMap.put("dataDate", date);
+        dataMap.put("status", "pending"); // Set status to default
+
+        // Store the data in the database under the unique key
+        FirebaseDatabase.getInstance().getReference("Items")
+                .child(key)
+                .setValue(dataMap)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                            // Clear input fields after successful upload
+                            uploadTopic.setText("");
+                            uploadDesc.setText("");
+                            uploadLang.setText("");
+                            uploadDate.setText("");
 
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
                         Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    private void reloadFragment() {
-        Fragment currentFragment = getParentFragmentManager().findFragmentById(R.id.navCatalog);
-        if (currentFragment != null) {
-            getParentFragmentManager().beginTransaction()
-                    .detach(currentFragment)
-                    .attach(currentFragment)
-                    .commit();
-        }
-    }
+
+
+
 
 
 }
