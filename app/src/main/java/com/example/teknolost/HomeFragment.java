@@ -27,6 +27,7 @@ public class HomeFragment extends Fragment implements ItemAdapter.OnItemClickLis
     private TextView userheading;
     private RecyclerView recyclerView;
     private ItemAdapter itemAdapter;
+
     private ArrayList<Items> itemsList;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
@@ -42,6 +43,7 @@ public class HomeFragment extends Fragment implements ItemAdapter.OnItemClickLis
         itemsList = new ArrayList<>();
         itemAdapter = new ItemAdapter(getContext(), itemsList, this);
         recyclerView.setAdapter(itemAdapter);
+
 
         String currUserId = user.getUid();
         Log.d("firebase", "Accessing path: users/" + currUserId + "/fullname");

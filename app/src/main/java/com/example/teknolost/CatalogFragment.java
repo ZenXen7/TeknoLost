@@ -198,7 +198,8 @@ public class CatalogFragment extends Fragment {
         dataMap.put("dataLang", lang);
         dataMap.put("dataTitle", title);
         dataMap.put("dataDate", date);
-        dataMap.put("status", "pending"); // Set status to default
+        dataMap.put("status", "pending");
+        dataMap.put("itemId", key);// Set status to default
 
         // Store the data in the database under the unique key
         FirebaseDatabase.getInstance().getReference("Items")
@@ -208,7 +209,7 @@ public class CatalogFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(),    "Success", Toast.LENGTH_SHORT).show();
                             // Clear input fields after successful upload
                             uploadTopic.setText("");
                             uploadDesc.setText("");
@@ -224,6 +225,7 @@ public class CatalogFragment extends Fragment {
                     }
                 });
     }
+
 
 
 

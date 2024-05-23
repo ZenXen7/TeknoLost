@@ -31,6 +31,29 @@ public class ItemList extends AppCompatActivity implements ItemAdapter.OnItemCli
         itemsList = new ArrayList<>();
         itemAdapter = new ItemAdapter(this, itemsList, this);
         recyclerView.setAdapter(itemAdapter);
+//
+//        FirebaseDatabase.getInstance().getReference().child("Items")
+//                .addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        itemsList.clear();
+//                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                            Items item = dataSnapshot.getValue(Items.class);
+//                            if (item.getStatus() != null && item.getStatus().equals("pending")) {
+//                                itemsList.add(item);
+//                                item.setItemId(dataSnapshot.getKey());
+//
+//                            }
+//                        }
+//                        itemAdapter.notifyDataSetChanged();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                        // Handle possible errors.
+//                    }
+//                });
+
 
         FirebaseDatabase.getInstance().getReference().child("Items")
                 .addValueEventListener(new ValueEventListener() {
@@ -39,10 +62,9 @@ public class ItemList extends AppCompatActivity implements ItemAdapter.OnItemCli
                         itemsList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Items item = dataSnapshot.getValue(Items.class);
-                            if (item.getStatus() != null && item.getStatus().equals("default")) {
+                            if (item != null) {
+//                                item.setItemId(dataSnapshot.getKey());
                                 itemsList.add(item);
-                                item.setItemId(dataSnapshot.getKey());
-
                             }
                         }
                         itemAdapter.notifyDataSetChanged();
@@ -53,6 +75,7 @@ public class ItemList extends AppCompatActivity implements ItemAdapter.OnItemCli
                         // Handle possible errors.
                     }
                 });
+
     }
 
     @Override
@@ -60,7 +83,7 @@ public class ItemList extends AppCompatActivity implements ItemAdapter.OnItemCli
         Items clickedItem = itemsList.get(position);
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra("item_data", clickedItem);
-        intent.putExtra("itemId", clickedItem.getItemId()); // Pass the itemId here
+
 
 
 

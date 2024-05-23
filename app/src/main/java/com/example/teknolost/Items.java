@@ -58,7 +58,7 @@ public class Items implements Serializable {
         this.dataLang = dataLang;
     }
 
-        public String s() {
+    public String s() {
         return dataTitle;
     }
 
