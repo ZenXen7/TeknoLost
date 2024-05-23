@@ -19,30 +19,8 @@
             android:background="#FDD563"
             tools:context=".CatalogFragment">
 
-            <!-- Background Image with Overlay -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="180dp"
-                android:background="#00000000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.29000002">
+            <!-- Title -->
 
-                <!-- Background Image -->
-
-                <!-- Overlay View -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00FFFFFF" <!-- Semi-transparent black color -->
-                android:alpha="0.5" <!-- Adjust opacity here -->
-                android:visibility="visible" />
-            </FrameLayout>
-
-
-            <!-- Upload Image -->
             <TextView
                 android:id="@+id/titleTextView"
                 android:layout_width="wrap_content"
@@ -51,13 +29,14 @@
                 android:fontFamily="@font/poppinsbold"
                 android:text="Report Lost Items"
                 android:textColor="#730101"
-                android:textSize="34sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.222"
+                app:layout_constraintHorizontal_bias="0.13"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Upload Image -->
             <ImageView
                 android:id="@+id/uploadImage"
                 android:layout_width="match_parent"
