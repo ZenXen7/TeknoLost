@@ -86,8 +86,6 @@ public class ItemList extends AppCompatActivity implements ItemAdapter.OnItemCli
 
 
 
-
-
         startActivity(intent);
     }
 }

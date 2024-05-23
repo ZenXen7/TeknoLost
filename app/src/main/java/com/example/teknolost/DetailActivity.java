@@ -3,7 +3,6 @@
     import android.app.AlertDialog;
     import android.content.DialogInterface;
     import android.os.Bundle;
-    import android.util.Log;
     import android.view.LayoutInflater;
     import android.view.View;
     import android.widget.Button;
@@ -19,8 +18,6 @@
 
     import com.bumptech.glide.Glide;
     import com.google.android.gms.tasks.OnCompleteListener;
-    import com.google.android.gms.tasks.OnFailureListener;
-    import com.google.android.gms.tasks.OnSuccessListener;
     import com.google.android.gms.tasks.Task;
     import com.google.firebase.auth.FirebaseAuth;
     import com.google.firebase.auth.FirebaseUser;
@@ -135,7 +132,7 @@
         private void showConfirmationDialog() {
             // Inflate custom layout
             LayoutInflater inflater = LayoutInflater.from(this);
-            View dialogView = inflater.inflate(R.layout.dialog_confirm_request, null);
+            View dialogView = inflater.inflate(R.layout.dialog_confirm_sentrequest, null);
 
             final EditText editTextDescription = dialogView.findViewById(R.id.edittext_description);
             final CheckBox checkboxConfirm = dialogView.findViewById(R.id.checkbox_confirm);
@@ -197,12 +194,15 @@
 
             // Create a request object
             Map<String, Object> requestClaim = new HashMap<>();
-            requestClaim.put("requestId", itemId);
+            requestClaim.put("requestId", requestClaimId);
             requestClaim.put("itemId", itemId);
             requestClaim.put("claimantId", currentUserId);
             requestClaim.put("itemUploaderId", itemUploaderId);
             requestClaim.put("briefDescription", description);
             requestClaim.put("status", "Request");
+
+
+
 
             // Create a new node for the claim request
             databaseReference.child("RequestClaims").child(requestClaimId).setValue(requestClaim)
@@ -217,7 +217,8 @@
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
                                                     // Send notification to the item uploader
-                                                    sendNotification(itemUploaderId, "Claim Request", "Someone has requested to claim the item you uploaded.");
+                                                    sendNotification(itemUploaderId, "Claim Request", "Someone has requested to claim the item you uploaded.", requestClaimId);
+                                                    sendNotification(currentUserId, "Successfully sent a request", "Your claim request has been sent successfully.", requestClaimId);
                                                     Toast.makeText(DetailActivity.this, "Request sent successfully.", Toast.LENGTH_SHORT).show();
                                                 } else {
                                                     Toast.makeText(DetailActivity.this, "Failed to update item status.", Toast.LENGTH_SHORT).show();
@@ -231,7 +232,7 @@
                     });
         }
 
-        private void sendNotification(String userId, String title, String message) {
+        private void sendNotification(String userId, String title, String message, String requestClaimId) {
             DatabaseReference notificationRef = FirebaseDatabase.getInstance().getReference("Notifications").child(userId);
 
             String notificationId = notificationRef.push().getKey();
@@ -240,19 +241,20 @@
                 return;
             }
 
-            Notification notification = new Notification(title, message, String.valueOf(System.currentTimeMillis()));
+            Notification notification = new Notification(title, message, String.valueOf(System.currentTimeMillis()), requestClaimId);
             notificationRef.child(notificationId).setValue(notification)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(DetailActivity.this, "Notification sent.", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(DetailActivity.this, "Notification sent.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(DetailActivity.this, "Failed to send notification.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
         }
+
 
 
     }

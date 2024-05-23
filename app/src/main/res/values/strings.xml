@@ -2,4 +2,13 @@
     <string name="app_name">TeknoLost</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="retrieval_locations">
+        <item>Enrollment Technical Office (ETO)</item>
+        <item>CIT WildCat Innovation Lab</item>
+        <item>Front Gate Guard Desk</item>
+        <item>Back  Gate Guard Desk</item>
+        <item>Student Affairs Office (SAO)</item>
+        <!-- Add more locations as needed -->
+    </string-array>
 </resources>
