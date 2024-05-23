@@ -1,5 +1,6 @@
 package com.example.teknolost;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +43,15 @@ public class NotificationFragment extends Fragment {
         notificationAdapter = new NotificationAdapter(notificationList);
         recyclerView.setAdapter(notificationAdapter);
 
-        // Assuming currentUserId is already available (e.g., from FirebaseAuth)
+        notificationAdapter.setOnItemClickListener(notification -> {
+            String requestId = notification.getRequestId();
+
+            Log.d("NotificationFragment", "Request ID: " + requestId);
+            Intent intent = new Intent(getContext(), ItemDetailsActivity.class);
+            intent.putExtra("requestId", requestId);
+            startActivity(intent);
+        });
+
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference("Notifications").child(currentUserId);
 
@@ -58,6 +68,7 @@ public class NotificationFragment extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Notification notification = dataSnapshot.getValue(Notification.class);
                     if (notification != null) {
+                        Log.d("NotificationFragment", "Notification: " + notification.getRequestId());
                         notificationList.add(notification);
                     }
                 }

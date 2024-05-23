@@ -1,40 +1,35 @@
-<!-- dialog_confirm_request.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="20dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Are you sure you want to confirm the request?"
+        android:text="Are you sure you want to request this item?"
         android:textSize="16sp"
         android:paddingBottom="16dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="By confirming, you agree that you have verified and confirmed that the item belongs to the rightful owner. Any false confirmations may result in account suspension or further action as per the platform's policies."
+        android:text="By confirming, you agree that you are the rightful owner of this item and that the information provided is accurate to the best of your knowledge. Any false claims may result in account suspension or further action as per the platform's policies."
         android:textSize="14sp"
         android:paddingBottom="16dp"/>
 
-    <TextView
+    <EditText
+        android:id="@+id/edittext_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select a retrieval location"
+        android:hint="Provide a brief description of the item for proof of ownership"
         android:textSize="14sp"
-        android:paddingBottom="8dp"/>
-
-    <Spinner
-        android:id="@+id/spinner_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:padding="8dp"/>
 
     <CheckBox
         android:id="@+id/checkbox_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="I understand and agree to the terms and conditions."/>
-
 </LinearLayout>

@@ -4,13 +4,30 @@
     android:layout_height="match_parent">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
 
-    <androidx.recyclerview.widget.RecyclerView
+            android:text="Notifications"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+        <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
         android:clipToPadding="false" />
+
+    </LinearLayout>
 </FrameLayout>
