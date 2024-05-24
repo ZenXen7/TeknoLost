@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDD563"
+    android:background="#00FFFFFF"
     android:orientation="vertical">
 
     <ScrollView
@@ -16,27 +16,27 @@
             android:id="@+id/bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FDD563"
+            android:background="#FFFFFF"
             tools:context=".CatalogFragment">
 
             <!-- Title -->
 
+            <!-- Upload Image -->
             <TextView
                 android:id="@+id/titleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:fontFamily="@font/poppinsbold"
-                android:text="Report Lost Items"
+                android:fontFamily="@font/kamerik"
+                android:text="Report"
                 android:textColor="#730101"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.13"
+                app:layout_constraintHorizontal_bias="0.103"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Upload Image -->
             <ImageView
                 android:id="@+id/uploadImage"
                 android:layout_width="match_parent"
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/poppinsbold"
+                android:fontFamily="@font/helveticab"
                 android:text="Item Name:"
                 android:textColor="#333333"
                 android:textSize="16sp"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="#FDD563"
                 app:boxCornerRadiusBottomEnd="16dp"
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
@@ -88,7 +88,7 @@
                     android:id="@+id/itemNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
+                    android:backgroundTint="#E2FDD563"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppinsbold"
+                android:fontFamily="@font/helveticab"
                 android:text="Description:"
                 android:textColor="#333333"
                 android:textSize="16sp"
@@ -130,7 +130,7 @@
                     android:id="@+id/descriptionEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
+                    android:backgroundTint="#E2FDD563"
                     android:inputType="textMultiLine"
                     android:minLines="3" />
 
@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppinsbold"
+                android:fontFamily="@font/helveticab"
                 android:text="Landmark:"
                 android:textColor="#333333"
                 android:textSize="16sp"
@@ -173,7 +173,7 @@
                     android:id="@+id/landmarkEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
+                    android:backgroundTint="#E2FDD563"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppinsbold"
+                android:fontFamily="@font/helveticab"
                 android:text="Date:"
                 android:textColor="#333333"
                 android:textSize="16sp"
@@ -215,7 +215,7 @@
                     android:id="@+id/dateEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
+                    android:backgroundTint="#E2FDD563"
                     android:inputType="date" />
 
             </com.google.android.material.textfield.TextInputLayout>

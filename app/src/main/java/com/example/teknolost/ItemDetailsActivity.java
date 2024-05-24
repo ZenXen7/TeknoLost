@@ -7,10 +7,11 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -33,24 +34,32 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ItemDetailsActivity extends AppCompatActivity {
-    private TextView itemName, claimant, briefDescription,retrieveLocation;
+    private TextView itemName, claimant, briefDescription,retrieveLocation, textLocation;
     private ImageButton btnBack;
     private ImageView itemImage;
     private Button confirmButton;
 
     private String requestId;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_item_details);
+
+
 
         itemName = findViewById(R.id.previewItemName);
         claimant = findViewById(R.id.previewClaimantId);
         briefDescription = findViewById(R.id.previewbriefDescription);
-        retrieveLocation = findViewById(R.id.location);
+        retrieveLocation = findViewById(R.id.textLocation);
         itemImage = findViewById(R.id.previewItemImage);
         confirmButton = findViewById(R.id.btnConfirm);
+        textLocation = findViewById(R.id.textLocation);
+        btnBack = findViewById(R.id.backButton);
 
         requestId = getIntent().getStringExtra("requestId");
         if (requestId != null) {
@@ -59,6 +68,13 @@ public class ItemDetailsActivity extends AppCompatActivity {
         } else {
             Log.e("ItemDetailsActivity", "Request ID is null");
         }
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,9 +109,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     // Check the status and update the visibility of retrievalLocation
                     if ("Confirmed".equals(status)) {
                         // Show the retrievalLocation
-                        briefDescription.setVisibility(View.INVISIBLE);
-                        retrieveLocation.setVisibility(View.VISIBLE);
-                        retrieveLocation.setText("Retrieval Location: " + retrievalLocation);
+                        textLocation.setVisibility((View.VISIBLE));
+
+                        textLocation.setText("Retreival Location: " + retrievalLocation);
                     } else {
                         // Hide the retrievalLocation
                         retrieveLocation.setVisibility(View.GONE);
@@ -182,7 +198,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         spinnerLocation.setAdapter(adapter);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Confirm Request");
+//        builder.setTitle("Confirm Request");
         builder.setView(dialogView);
         builder.setPositiveButton("Confirm", null);
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
