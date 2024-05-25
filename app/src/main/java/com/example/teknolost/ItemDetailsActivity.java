@@ -93,7 +93,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     // Check the status and update the visibility of retrievalLocation
                     if ("Confirmed".equals(status)) {
                         // Show the retrievalLocation
-                        briefDescription.setVisibility(View.INVISIBLE);
+                        briefDescription.setVisibility(View.INVISIBLE); 
                         retrieveLocation.setVisibility(View.VISIBLE);
                         retrieveLocation.setText("Retrieval Location: " + retrievalLocation);
                     } else {
