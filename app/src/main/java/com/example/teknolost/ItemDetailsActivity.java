@@ -27,11 +27,16 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class ItemDetailsActivity extends AppCompatActivity {
     private TextView itemName, claimant, briefDescription,retrieveLocation, textLocation;
@@ -40,7 +45,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private Button confirmButton;
 
     private String requestId;
-
+    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
     @Override
@@ -60,6 +65,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         confirmButton = findViewById(R.id.btnConfirm);
         textLocation = findViewById(R.id.textLocation);
         btnBack = findViewById(R.id.backButton);
+
 
         requestId = getIntent().getStringExtra("requestId");
         if (requestId != null) {
@@ -93,6 +99,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     String briefDescriptionText = snapshot.child("briefDescription").getValue(String.class);
                     String claimantId = snapshot.child("claimantId").getValue(String.class);
                     String itemId = snapshot.child("itemId").getValue(String.class);
+
                     String claimantName = snapshot.child("claimantName").getValue(String.class);
                     String status = snapshot.child("status").getValue(String.class);
                     String retrievalLocation = snapshot.child("retrievalLocation").getValue(String.class);
@@ -111,7 +118,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     if ("Confirmed".equals(status)) {
                         // Show the retrievalLocation
 
-                        briefDescription.setVisibility(View.INVISIBLE); 
+                        briefDescription.setVisibility(View.VISIBLE);
                         retrieveLocation.setVisibility(View.VISIBLE);
                         retrieveLocation.setText("Retrieval Location: " + retrievalLocation);
 
@@ -220,7 +227,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     }
 
 
-    private void sendConfirmationNotification(String claimantId, String message) {
+    private void sendConfirmationNotification(String claimantId, String message, String date) {
         DatabaseReference notificationRef = FirebaseDatabase.getInstance().getReference("Notifications").child(claimantId);
 
         String notificationId = notificationRef.push().getKey();
@@ -229,7 +236,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
             return;
         }
 
-        Notification notification = new Notification("Request Confirmed", message, String.valueOf(System.currentTimeMillis()), requestId,claimantId);
+        Notification notification = new Notification("Request Confirmed", message, getCurrentDate(), requestId,claimantId);
         notificationRef.child(notificationId).setValue(notification)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -245,7 +252,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     private void confirmRequest(String selectedLocation, String requestId) {
         DatabaseReference requestRef = FirebaseDatabase.getInstance().getReference("RequestClaims").child(requestId);
-
+        DatabaseReference updateiTEm = FirebaseDatabase.getInstance().getReference("Items").child(requestId);
         // Show progress dialog
         ProgressDialog progressDialog = new ProgressDialog(ItemDetailsActivity.this);
         progressDialog.setTitle("Confirming Request");
@@ -259,8 +266,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String claimantId = snapshot.getValue(String.class);
-
+                    String currUser = currentUser.getUid();
                     // Update request status and retrieval location
+                    updateiTEm.child("status").setValue("Confirmed");
                     requestRef.child("status").setValue("Confirmed");
                     requestRef.child("retrievalLocation").setValue(selectedLocation)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -268,13 +276,15 @@ public class ItemDetailsActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         // Send confirmation notification to the claimant
-                                        sendConfirmationNotification(claimantId, "Your request has been confirmed.");
+                                        sendConfirmationNotification(claimantId, "Your request has been confirmed.", getCurrentDate());
+                                        sendConfirmationNotification(currUser, "Successfully confirmed a claim request.", getCurrentDate());
 
                                         // Delay dismissal of progress dialog for 3 seconds
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
                                                 progressDialog.dismiss();
+                                                finish();
                                                 Toast.makeText(ItemDetailsActivity.this, "Request confirmed with location: " + selectedLocation, Toast.LENGTH_SHORT).show();
                                             }
                                         }, 3000); // 3 seconds delay
@@ -295,12 +305,20 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 Toast.makeText(ItemDetailsActivity.this, "Error fetching claimant ID: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
+
+            private String getCurrentDate() {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                return sdf.format(new Date());
+            }
         });
     }
 
 
 
-
+    private String getCurrentDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        return sdf.format(new Date());
+    }
 
 
 }

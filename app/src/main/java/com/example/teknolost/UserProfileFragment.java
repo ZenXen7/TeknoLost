@@ -1,19 +1,14 @@
 package com.example.teknolost;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,9 +21,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserProfileFragment extends Fragment {
 
-    private EditText upName, upEmail;
 
-
+    private TextView upName, upEmail;
+    private boolean isPrivacyPolicyVisible = false;
+    private boolean isFeedbackVisible = false;
+    private boolean isAboutUsVisible = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,60 +33,92 @@ public class UserProfileFragment extends Fragment {
 
         upName = view.findViewById(R.id.upName);
         upEmail = view.findViewById(R.id.upEmail);
-        Button buttonLogout  = view.findViewById(R.id.buttonLogout);
-
+        Button buttonLogout = view.findViewById(R.id.buttonLogout);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference usersRef = database.getReference("users");
 
-
         // Get current user from Firebase Authentication
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        String curruser = currentUser.getUid();
+        if (currentUser != null) {
+            String curruser = currentUser.getUid();
 
+            usersRef.child(curruser).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        String fullName = snapshot.child("fullname").getValue(String.class);
+                        String email = snapshot.child("email").getValue(String.class);
 
-        usersRef.child(curruser).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    String fullName = snapshot.child("fullname").getValue(String.class);
-                    String email = snapshot.child("email").getValue(String.class);
-
-                    // Now you have the user's full name and email
-                    // You can set them in your EditText fields or wherever needed
-                    upName.setText(fullName);
-                    upEmail.setText(email);
-                } else {
-                    // User not found
+                        // Now you have the user's full name and email
+                        // You can set them in your EditText fields or wherever needed
+                        upName.setText(fullName);
+                        upEmail.setText(email);
+                    } else {
+                        // User not found
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle error
+                }
+            });
+        }
 
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(requireContext(), Login.class);
                 startActivity(intent);
                 requireActivity().finish();
-
             }
         });
 
+        view.findViewById(R.id.privacy_policy_label).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                togglePrivacyPolicy(v);
+            }
+        });
 
+        view.findViewById(R.id.feedback_label).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleFeedback(v);
+            }
+        });
 
+        view.findViewById(R.id.about_us_label).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleAboutUs(v);
+            }
+        });
 
         return view;
+    }
+
+    private void togglePrivacyPolicy(View view) {
+        TextView content = getView().findViewById(R.id.privacy_policy_content);
+        isPrivacyPolicyVisible = !isPrivacyPolicyVisible;
+        content.setVisibility(isPrivacyPolicyVisible ? View.VISIBLE : View.GONE);
+        ((TextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, isPrivacyPolicyVisible ? R.drawable.ic_arrow_up : R.drawable.ic_arrow_down, 0);
+    }
+
+    private void toggleFeedback(View view) {
+        TextView content = getView().findViewById(R.id.feedback_content);
+        isFeedbackVisible = !isFeedbackVisible;
+        content.setVisibility(isFeedbackVisible ? View.VISIBLE : View.GONE);
+        ((TextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, isFeedbackVisible ? R.drawable.ic_arrow_up : R.drawable.ic_arrow_down, 0);
+    }
+
+    private void toggleAboutUs(View view) {
+        TextView content = getView().findViewById(R.id.about_us_content);
+        isAboutUsVisible = !isAboutUsVisible;
+        content.setVisibility(isAboutUsVisible ? View.VISIBLE : View.GONE);
+        ((TextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, isAboutUsVisible ? R.drawable.ic_arrow_up : R.drawable.ic_arrow_down, 0);
     }
 }

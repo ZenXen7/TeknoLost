@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -206,6 +205,7 @@ public class DetailActivity extends AppCompatActivity {
                                                                 String currentDate = getCurrentDate();
                                                                 sendNotification(itemUploaderId, "Claim Request", "Someone has requested to claim the item you uploaded.", requestClaimId, currentDate, fullname);
                                                                 sendNotification(currentUserId, "Successfully sent a request", "Your claim request has been sent successfully.", requestClaimId, currentDate, fullname);
+                                                                finish();
                                                                 Toast.makeText(DetailActivity.this, "Request sent successfully.", Toast.LENGTH_SHORT).show();
                                                             } else {
                                                                 Toast.makeText(DetailActivity.this, "Failed to update item status.", Toast.LENGTH_SHORT).show();

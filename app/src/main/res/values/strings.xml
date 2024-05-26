@@ -11,4 +11,14 @@
         <item>Student Affairs Office (SAO)</item>
         <!-- Add more locations as needed -->
     </string-array>
+
+
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="feedback">Feedback</string>
+    <string name="about_us">About Us</string>
+    <string name="log_out">Log Out</string>
+    <string name="provide_feedback">Provide Feedback</string>
+    <string name="learn_more">Learn More</string>
+
+
 </resources>

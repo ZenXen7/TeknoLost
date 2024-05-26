@@ -1,75 +1,210 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".UserProfileFragment">
 
-
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:padding="20dp">
 
-
-        <TextView
-            android:id="@+id/profile"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:text="Profile" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/upName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/round_corner"
-            android:inputType="text"
-        />
+            <!-- Privacy Policy -->
 
+            <TextView
+                android:id="@+id/profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/kamerik"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="10dp"
+                android:text="Profile"
+                android:textColor="#730101"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/upEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/round_corner"
-            android:ems="10"
-            android:inputType="text"
-            android:paddingLeft="30dp"
-            android:paddingTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:paddingBottom="10dp" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="420dp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/buttonLogout"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="20dp"
-            android:backgroundTint="#730101"
-            android:text="Logout"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF" />
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="61dp"
+                        android:layout_height="57dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="37dp"
+                        android:layout_marginBottom="56dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/profilepic" />
 
+                    <TextView
+                        android:id="@+id/upName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginTop="36dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_toRightOf="@id/imageView"
+                        android:ems="10"
+                        android:fontFamily="@font/poppinsbold"
+                        android:inputType="none"
+                        android:textSize="16sp" />
 
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/upEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/upName"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_toRightOf="@id/imageView"
+
+                        android:ems="10"
+                        android:fontFamily="@font/helvetica"
+                        android:inputType="none"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Privacy Policy, Feedback, About Us sections remain unchanged -->
+
+            <LinearLayout
+                android:id="@+id/privacy_policy_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_corner"
+                android:backgroundTint="#FDD563"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/privacy_policy_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:fontFamily="@font/sfpro"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="10dp"
+                    android:text="Privacy Policy"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/privacy_policy_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helvetica"
+                    android:padding="10dp"
+                    android:text="Effective Date: May 4, 2024\nThis Privacy Policy describes how TeknoLost, a mobile application developed for students of Cebu Institute of Technology-University, collects, uses, and discloses your information. This policy applies solely"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- Feedback -->
+            <LinearLayout
+                android:id="@+id/feedback_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_corner"
+                android:backgroundTint="#FDD563"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/feedback_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:fontFamily="@font/sfpro"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="10dp"
+                    android:text="Contact Us"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/feedback_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helvetica"
+                    android:padding="10dp"
+                    android:text="Have a question or feedback? Reach out to us directly through our contact form or email. We're here to assist you with any inquiries or suggestions you may have regarding the Teknolost app."
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- About Us -->
+            <LinearLayout
+                android:id="@+id/about_us_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/round_corner"
+                android:backgroundTint="#FDD563"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/about_us_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:fontFamily="@font/sfpro"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="10dp"
+                    android:text="About Us"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/about_us_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helvetica"
+                    android:padding="10dp"
+                    android:text="Welcome to Teknolost, your trusted companion for lost and found items on campus. With our user-friendly platform, we aim to streamline the process of reuniting lost belongings with their owners within our campus community. At Teknolost, we're committed to making your campus experience safer and more convenient. Join us in our mission to connect lost items with their rightful owners effortlessly."
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonLogout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="20dp"
+                android:backgroundTint="#730101"
+                android:text="Logout"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>
