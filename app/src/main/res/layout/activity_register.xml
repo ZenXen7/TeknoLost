@@ -26,7 +26,7 @@
     <EditText
         android:id="@+id/username"
         android:layout_width="330dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/round_corner2"
         android:backgroundTint="#E4FFFFFF"
@@ -38,12 +38,12 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.359" />
+        app:layout_constraintVertical_bias="0.365" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="330dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/round_corner2"
         android:backgroundTint="#E4FFFFFF"
@@ -55,7 +55,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565" />
+        app:layout_constraintVertical_bias="0.571" />
 
     <Button
         android:id="@+id/btnReg"
@@ -106,6 +106,7 @@
         android:fontFamily="@font/kamerik"
         android:text="Full Name"
         android:textColor="#640E0B"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.112"
@@ -121,6 +122,7 @@
         android:fontFamily="@font/kamerik"
         android:text="Email"
         android:textColor="#640E0B"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
@@ -136,6 +138,7 @@
         android:fontFamily="@font/kamerik"
         android:text="Confirm Password"
         android:textColor="#640E0B"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.145"
@@ -151,6 +154,7 @@
         android:fontFamily="@font/kamerik"
         android:text="Password"
         android:textColor="#640E0B"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.118"
@@ -161,7 +165,7 @@
     <EditText
         android:id="@+id/fullname"
         android:layout_width="330dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:background="@drawable/round_corner2"
         android:backgroundTint="#E4FFFFFF"
         android:ems="10"
@@ -169,15 +173,15 @@
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.265" />
 
     <EditText
         android:id="@+id/confirmpass"
         android:layout_width="330dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/round_corner2"
         android:backgroundTint="#E4FFFFFF"
@@ -189,7 +193,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721" />
+        app:layout_constraintVertical_bias="0.73" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
