@@ -1,113 +1,237 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1C981"
-    android:padding="20dp"
-    tools:context=".CatalogFragment">
+    android:background="#00FFFFFF"
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#000000">
 
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="10dp">
+            android:background="#FFFFFF"
+            tools:context=".CatalogFragment">
 
+            <!-- Title -->
+
+            <!-- Upload Image -->
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Report Lost Items"
-                android:textAlignment="textStart"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
+                android:id="@+id/titleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </LinearLayout>
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/kamerik"
+                android:text="Report"
+                android:textColor="#730101"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.103"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/uploadImage"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp"
-
-                android:padding="30dp"
-                android:src="@drawable/upimage" />
-
-            <EditText
-                android:id="@+id/uploadTopic"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/round_corner"
-                android:gravity="start|center_vertical"
-                android:hint="Item"
-                android:padding="16dp"
-                android:textColor="@color/lavender" />
+                android:background="#000000"
+                android:backgroundTint="#00000000"
+                android:contentDescription="Upload Image"
+                android:scaleType="fitCenter"
+                android:src="@drawable/upimage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-            <EditText
-                android:id="@+id/uploadDesc"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
+            <!-- Item Name Label -->
+            <TextView
+                android:id="@+id/itemNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/round_corner"
-                android:gravity="start|center_vertical"
-                android:hint="Description"
-                android:padding="16dp"
-                android:textColor="@color/lavender" />
+                android:fontFamily="@font/helveticab"
+                android:text="Item Name:"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/uploadImage" />
 
-            <EditText
-                android:id="@+id/uploadLand"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/round_corner"
-                android:gravity="start|center_vertical"
-                android:hint="Landmark"
-                android:padding="16dp"
-                android:textColor="@color/lavender" />
+            <!-- Item Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/itemNameInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="#FDD563"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="@android:color/transparent"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itemNameLabel">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/itemNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#E2FDD563"
+                    android:inputType="text" />
 
-            <EditText
-                android:id="@+id/uploadDate"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/round_corner"
-                android:gravity="start|center_vertical"
-                android:ems="10"
-                android:hint="Date"
-                android:padding="16dp"
-                android:focusable="false"
-                android:clickable="true"
-                android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/saveButton"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:text="Submit"
-                android:backgroundTint="#730101"
-                android:textSize="18sp"
-                 />
+            <!-- Description Label -->
+            <TextView
+                android:id="@+id/descriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/helveticab"
+                android:text="Description:"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itemNameInputLayout" />
 
-        </LinearLayout>
+            <!-- Description -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/descriptionInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@android:color/white"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="@android:color/transparent"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionLabel">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descriptionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#E2FDD563"
+                    android:inputType="textMultiLine"
+                    android:minLines="3" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Landmark Label -->
+            <TextView
+                android:id="@+id/landmarkLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/helveticab"
+                android:text="Landmark:"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionInputLayout" />
+
+            <!-- Landmark -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/landmarkInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@android:color/white"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="@android:color/transparent"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/landmarkLabel">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/landmarkEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#E2FDD563"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Date Label -->
+            <TextView
+                android:id="@+id/dateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/helveticab"
+                android:text="Date:"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/landmarkInputLayout" />
+
+            <!-- Date -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@android:color/white"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="@android:color/transparent"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateLabel">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dateEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#E2FDD563"
+                    android:inputType="date" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:backgroundTint="#730101"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>

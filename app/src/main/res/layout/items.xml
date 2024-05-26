@@ -1,164 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="8dp"
-    app:cardCornerRadius="8dp"
-    android:layout_marginRight="26dp"
-    android:layout_marginLeft="26dp"
-    android:layout_marginBottom="5dp"
-    >
+    android:orientation="vertical"
+    android:gravity="center">
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:id="@+id/itemImage"
-            android:layout_width="100dp"
-             android:layout_height="100dp"
-             android:scaleType="centerCrop"
-            android:padding="14dp"
-            android:layout_weight="1"
-            android:src="@drawable/profile" />
+        android:layout_margin="8dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp">
 
         <LinearLayout
-            android:layout_width="245dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FDD563"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/profile" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/itemName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
+                android:fontFamily="@font/sfpro"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="0dp"
+                android:text="Item Name"
+                android:textColor="#730101"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold">
-
-                </TextView>
-
-
-                <TextView
-                    android:id="@+id/itemName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:text="Item"
-                    android:textColor="@color/black"
-                    android:textSize="16sp">
-
-                </TextView>
-            </LinearLayout>
-
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/itemDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
+                android:fontFamily="@font/helvetica"
+                android:paddingStart="16dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:text="Item Description"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Description"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold">
-
-                </TextView>
-
-
-                <TextView
-                    android:id="@+id/itemDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:text="Item"
-                    android:textColor="@color/black"
-                    android:textSize="16sp">
-
-                </TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/itemLandmark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
+                android:fontFamily="@font/helveticab"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:text="Item Landmark"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Landmark"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold">
-
-                </TextView>
-
-
-                <TextView
-                    android:id="@+id/itemLandmark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:text="Item"
-                    android:textColor="@color/black"
-                    android:textSize="16sp">
-
-                </TextView>
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/itemDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold">
-
-                </TextView>
-
-
-                <TextView
-                    android:id="@+id/itemDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:text="Item"
-                    android:textColor="@color/black"
-                    android:textSize="16sp">
-
-                </TextView>
-            </LinearLayout>
-
-
-
-
+                android:fontFamily="@font/kamerik"
+                android:gravity="end"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                android:text="Item Date"
+                android:textColor="#730101"
+                android:textSize="12sp" />
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
-    </LinearLayout>
-
-
-</androidx.cardview.widget.CardView>
+</LinearLayout>

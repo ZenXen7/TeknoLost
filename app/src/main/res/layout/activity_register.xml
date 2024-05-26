@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1C981"
+    android:background="#FDD563"
     tools:context=".Register">
 
     <TextView
@@ -26,7 +26,7 @@
     <EditText
         android:id="@+id/username"
         android:layout_width="330dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/round_corner2"
         android:backgroundTint="#E4FFFFFF"
@@ -43,7 +43,7 @@
     <EditText
         android:id="@+id/password"
         android:layout_width="330dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/round_corner2"
         android:backgroundTint="#E4FFFFFF"
@@ -64,6 +64,7 @@
         android:backgroundTint="#730101"
         android:padding="15dp"
         android:text="Register"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
@@ -80,7 +81,7 @@
         android:textColor="#730101"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.707"
+        app:layout_constraintHorizontal_bias="0.73"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.914" />
@@ -110,7 +111,7 @@
         app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.072" />
 
     <TextView
         android:id="@+id/txtUsername"
@@ -118,14 +119,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:fontFamily="@font/kamerik"
-        android:text="Username"
+        android:text="Email"
         android:textColor="#640E0B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintVertical_bias="0.247" />
 
     <TextView
         android:id="@+id/txtConfirmPass"
@@ -137,10 +138,10 @@
         android:textColor="#640E0B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.581" />
+        app:layout_constraintVertical_bias="0.601" />
 
     <TextView
         android:id="@+id/txtPassword"
@@ -152,15 +153,15 @@
         android:textColor="#640E0B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.403" />
+        app:layout_constraintVertical_bias="0.426" />
 
     <EditText
         android:id="@+id/fullname"
         android:layout_width="330dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@drawable/round_corner2"
         android:backgroundTint="#E4FFFFFF"
         android:ems="10"
@@ -176,7 +177,7 @@
     <EditText
         android:id="@+id/confirmpass"
         android:layout_width="330dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/round_corner2"
         android:backgroundTint="#E4FFFFFF"

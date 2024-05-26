@@ -18,28 +18,12 @@
             android:id="@+id/profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="28dp"
+            android:textSize="24dp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:text="Profile" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/profile" />
-
-        <TextView
-            android:id="@+id/upme"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="30dp"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name" />
 
         <EditText
             android:id="@+id/upName"
@@ -51,44 +35,40 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:paddingLeft="30dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/round_corner"
             android:inputType="text"
         />
 
 
-        <TextView
-            android:id="@+id/up"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="30dp"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Email" />
-
         <EditText
             android:id="@+id/upEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/round_corner"
+            android:ems="10"
             android:inputType="text"
-            />
+            android:paddingLeft="30dp"
+            android:paddingTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:paddingBottom="10dp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="420dp" />
 
         <Button
-            android:layout_marginTop="50dp"
-            android:id="@+id/updateUserProfile"
+            android:id="@+id/buttonLogout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:text="SAVE" />
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:backgroundTint="#730101"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
 
 
     </LinearLayout>

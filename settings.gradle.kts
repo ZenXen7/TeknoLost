@@ -10,9 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        
     }
 }
 
 rootProject.name = "TeknoLost"
 include(":app")
- 

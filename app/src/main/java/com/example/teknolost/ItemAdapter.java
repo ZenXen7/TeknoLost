@@ -15,6 +15,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
     Context context;
     ArrayList<Items> itemsList;
+    private ArrayList<Items> itemsListFull;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -25,6 +26,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         this.context = context;
         this.itemsList = itemsList;
         this.listener = listener;
+        this.itemsListFull = new ArrayList<>(itemsList); // Make a copy of the original list
     }
 
     @NonNull
@@ -75,6 +77,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             });
         }
     }
+
 
 
 
