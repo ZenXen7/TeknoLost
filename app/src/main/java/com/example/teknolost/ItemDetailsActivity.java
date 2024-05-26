@@ -157,7 +157,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     String imageUrl = snapshot.child("dataImage").getValue(String.class);
                     itemName.setText(title);
 
-                    // Load the image using Glide or any other image loading library
+
                     Glide.with(ItemDetailsActivity.this).load(imageUrl).into(itemImage);
                 } else {
                     Toast.makeText(ItemDetailsActivity.this, "Item not found", Toast.LENGTH_SHORT).show();
@@ -178,7 +178,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         final Spinner spinnerLocation = dialogView.findViewById(R.id.spinner_location);
         final CheckBox checkboxConfirm = dialogView.findViewById(R.id.checkbox_confirm);
 
-        // Set up the Spinner with retrieval locations
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.retrieval_locations, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -275,11 +275,11 @@ public class ItemDetailsActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        // Send confirmation notification to the claimant
+
                                         sendConfirmationNotification(claimantId, "Your request has been confirmed.", getCurrentDate());
                                         sendConfirmationNotification(currUser, "Successfully confirmed a claim request.", getCurrentDate());
 
-                                        // Delay dismissal of progress dialog for 3 seconds
+
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {

@@ -2,17 +2,18 @@ package com.example.teknolost;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class ItemList extends AppCompatActivity implements ItemAdapter.OnItemClickListener {
@@ -72,7 +73,7 @@ public class ItemList extends AppCompatActivity implements ItemAdapter.OnItemCli
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        // Handle possible errors.
+
                     }
                 });
 

@@ -84,7 +84,7 @@ public class DetailActivity extends AppCompatActivity {
             dataLang.setText("Location: " + item.getDataLang());
             dataDate.setText("Date: " + item.getDataDate());
 
-            // Load the image into the ImageView using Glide
+
             Glide.with(this).load(item.getDataImage()).into(itemImage);
         }
 
@@ -95,7 +95,7 @@ public class DetailActivity extends AppCompatActivity {
                     Toast.makeText(DetailActivity.this, "Item ID is null.", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // Show confirmation dialog
+
                 showConfirmationDialog();
             }
         });
@@ -129,7 +129,7 @@ public class DetailActivity extends AppCompatActivity {
 
         final AlertDialog dialog = builder.create();
 
-        // Override the positive button click to check the checkbox state and input field
+
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -148,7 +148,7 @@ public class DetailActivity extends AppCompatActivity {
                             return;
                         }
 
-                        // Proceed with the request and send the description
+
                         sendRequest(description);
                         dialog.dismiss();
                     }
@@ -162,7 +162,7 @@ public class DetailActivity extends AppCompatActivity {
     private void sendRequest(String description) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        // Create a new requestClaimId
+
         String requestClaimId = databaseReference.child("RequestClaims").push().getKey();
 
         if (requestClaimId == null) {
@@ -170,7 +170,7 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        // Retrieve the claimant's full name from the Firebase Realtime Database
+
         databaseReference.child("users").child(currentUserId).child("fullname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -195,7 +195,7 @@ public class DetailActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            // Update the status of the item
+
                                             databaseReference.child("Items").child(itemId).child("status").setValue("Request")
                                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
@@ -244,7 +244,7 @@ public class DetailActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            // Notification sent successfully
+
                         } else {
                             Toast.makeText(DetailActivity.this, "Failed to send notification.", Toast.LENGTH_SHORT).show();
                         }

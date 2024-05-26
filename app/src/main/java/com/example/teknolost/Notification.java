@@ -10,7 +10,7 @@ public class Notification implements Serializable {
     private String claimant;
 
     public Notification() {
-        // Default constructor required for calls to DataSnapshot.getValue(Notification.class)
+
     }
 
 

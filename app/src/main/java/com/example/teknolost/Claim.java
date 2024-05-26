@@ -6,7 +6,7 @@ public class Claim {
     public String status;
 
     public Claim() {
-        // Default constructor required for Firebase
+
     }
 
     public Claim(String claimantUserId, long claimDate, String status) {

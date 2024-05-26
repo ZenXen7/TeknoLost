@@ -38,7 +38,7 @@ public class UserProfileFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference usersRef = database.getReference("users");
 
-        // Get current user from Firebase Authentication
+
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (currentUser != null) {
@@ -51,12 +51,11 @@ public class UserProfileFragment extends Fragment {
                         String fullName = snapshot.child("fullname").getValue(String.class);
                         String email = snapshot.child("email").getValue(String.class);
 
-                        // Now you have the user's full name and email
-                        // You can set them in your EditText fields or wherever needed
+
                         upName.setText(fullName);
                         upEmail.setText(email);
                     } else {
-                        // User not found
+
                     }
                 }
 

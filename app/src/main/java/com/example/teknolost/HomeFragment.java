@@ -65,8 +65,10 @@ public class HomeFragment extends Fragment implements ItemAdapter.OnItemClickLis
                     DataSnapshot dataSnapshot = task.getResult();
                     if (dataSnapshot.exists()) {
                         String fullname = dataSnapshot.getValue(String.class);
-                        userheading.setText("Hello, " + fullname + "!");
-                        Log.d("firebase", "User fullname: " + fullname);
+                        String[] parts = fullname.split(" ");
+                        String firstName = parts[0]; // First part is the first name
+                        userheading.setText("Hello, " + firstName + "!");
+                        Log.d("firebase", "User first name: " + firstName);
                     } else {
                         Log.d("firebase", "Fullname data does not exist");
                     }
@@ -74,6 +76,7 @@ public class HomeFragment extends Fragment implements ItemAdapter.OnItemClickLis
                     Log.e("firebase", "Error getting fullname data", task.getException());
                 }
             }
+
         });
 
         myRef.child("Items").addValueEventListener(new ValueEventListener() {
