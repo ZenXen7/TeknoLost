@@ -11,6 +11,13 @@ This Lost and Found mobile application was developed as part of a 2nd-year proje
 - **User Authentication:** Secure login and registration system using Firebase Authentication.
 - **Real-time Database:** Firebase Firestore for storing and managing reports efficiently.
 
+### Screenshots
+<div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+  <img src="https://github.com/user-attachments/assets/776ecf69-3d5d-4272-98b1-62e0c76852a9" alt="Sign Up Page" width="250">
+  <img src="https://github.com/user-attachments/assets/8297b389-19f4-46af-baba-f4420ec6d6bb" alt="Home Page" width="250">
+  <img src="https://github.com/user-attachments/assets/43048973-a4fe-49da-8aaf-4ce681fb2fea" alt="Profile Page" width="250">
+</div>
+
 ## Technologies Used
 - **Android Studio** – Development environment for building Android applications.
 - **Java** – Programming language used for Android app development.
@@ -30,9 +37,11 @@ This Lost and Found mobile application was developed as part of a 2nd-year proje
 
 ## Contributors
 - **Jether Omictin** – Developer
-- **Karl Christian Ajero* – Developer
+- **Karl Christian Ajero** – Developer
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
 
 
